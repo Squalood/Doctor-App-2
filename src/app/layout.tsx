@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Clinica de Nefrología de la Dra. Ana Karen Ramírez Iracheta",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "@/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon.ico", type: "image/x-icon" },  
     ],
     apple: [
