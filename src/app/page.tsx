@@ -13,7 +13,7 @@ import Testimonials from "@/components/testimonials";
 import Contact from "@/components/contact";
 
 export default function Home() {
-  const slug = "clinica-de-nefrologia"; 
+  const slug = "clinica-renal"; 
   const { clinic, loading } = useGetClinic(slug);
   const { DoctorClinic } = useGetClinicDoctor(slug)
   const { ServicesClinic } = useGetClinicServices(slug);
@@ -43,8 +43,8 @@ export default function Home() {
   return (
     <main>
       <Hero data={clinic} /> 
-      <Services services={services} />
-      <WhyUs features={clinic.features} />
+      <Services services={services} clinic={clinic}/>
+      <WhyUs features={clinic.features}  />
       <Doctor data={doctor} />   
       <Testimonials list={clinic.testimonials} />
       

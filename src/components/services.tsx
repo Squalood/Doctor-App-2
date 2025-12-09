@@ -15,9 +15,10 @@ import ServiceCard from "./serviceCard";
 
 type ServicesProps = {
   services: ClinicType["services"];
+  clinic: ClinicType;
 };
 
-export default function Services({ services }: ServicesProps) {
+export default function Services({ services, clinic }: ServicesProps) {
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -49,7 +50,7 @@ export default function Services({ services }: ServicesProps) {
                 key={service.id}
                 className="basis-2/3 lg:basis-1/4 mx-auto my-2"
               >
-                <ServiceCard service={service} index={index} inView={inView} />
+                <ServiceCard service={service} clinic={clinic} index={index} inView={inView} />
               </CarouselItem>
             ))}
           </CarouselContent>
