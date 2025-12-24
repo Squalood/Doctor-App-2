@@ -1,57 +1,60 @@
 "use client";
 
-import ClinicSkeleton from "@/components/clinicSkeleton";
-import Hero from "@/components/hero";
-import { useGetClinicServices } from "../api/useGetClinicsServiceBySlug";
-import { useGetClinic } from "@/api/useGetClinicsBySlug";
-import Services from "@/components/services";
-import WhyUs from "@/components/whyUs";
-import Doctor from "@/components/doctor";
-import { useGetClinicDoctor } from "@/api/useGetClinicsDoctorBySlug";
-import ClinicGallery from "@/components/clinicGallety";
-import Testimonials from "@/components/testimonials";
-import Contact from "@/components/contact";
+import { useGetPage } from "@/api/usePageBySlug";
+import { BookingModal } from "@/components/bookingModal";
+import { FAQ } from "@/components/fAQ";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { Hero } from "@/components/hero";
+import { Process } from "@/components/process";
+import { Services } from "@/components/services";
+import { Testimonials } from "@/components/testimonials";
+import { TravelSupport } from "@/components/travelSupport";
+import { TrustStrip } from "@/components/trustStrip";
+import { WhyChoose } from "@/components/whyChoose";
+import { useState } from "react";
 
 export default function Home() {
-  const slug = "clinica-renal"; 
-  const { clinic, loading } = useGetClinic(slug);
-  const { DoctorClinic } = useGetClinicDoctor(slug)
-  const { ServicesClinic } = useGetClinicServices(slug);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
+  const closeBooking = () => setIsBookingOpen(false);
+
+  const { page, loading, error } = useGetPage("dra-iracheta");
 
   if (loading) {
-    return <ClinicSkeleton />;
-  }
-
-  if (!clinic) {
     return (
-      <div className="py-40 text-center">
-        <p className="text-destructive">Clínica no encontrada.</p>
+      <div className="flex items-center justify-center min-h-screen">
+        <p>Cargando...</p>
       </div>
     );
   }
 
-  if (!DoctorClinic || !DoctorClinic.doctor) {
-    return <p>No se encontró información del doctor.</p>;
+  if (error || !page) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p>Error: {error}</p>
+      </div>
+    );
   }
-  const { doctor } = DoctorClinic;
-
-  if (!ServicesClinic || !ServicesClinic.services) {
-    return <p>No se encontró información de los servicios.</p>;
-  }
-  const { services } = ServicesClinic;
 
   return (
-    <main>
-      <Hero data={clinic} /> 
-      <Services services={services} clinic={clinic}/>
-      <WhyUs features={clinic.features}  />
-      <Doctor data={doctor} />   
-      <Testimonials list={clinic.testimonials} />
+    <div className="min-h-screen bg-background">
+      <Header content={page.landingPageJson.telephone}/>
       
-      {clinic.gallery && clinic.gallery.length > 0 && (
-        <ClinicGallery clinic={clinic} />
-      )}
-      <Contact data={clinic} />
-    </main>
+      <main>
+        <Hero content={page.landingPageJson.hero}/>
+        <TrustStrip content={page.landingPageJson.trustStrip}/>
+        <Services content={page.landingPageJson.services}/>
+        <WhyChoose />
+        <Process content={page.landingPageJson.process}/>
+        <Testimonials content={page.landingPageJson.testimonials}/>
+        <FAQ />
+        <TravelSupport />
+      </main>
+
+      <Footer />
+
+      <BookingModal isOpen={isBookingOpen} onClose={closeBooking} />
+    </div>
   );
 }

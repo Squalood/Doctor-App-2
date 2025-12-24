@@ -1,73 +1,98 @@
-"use client";
+import { Play, Quote } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { LandingPageJson } from "@/types/pages";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Card } from "@/components/ui/card";
-import { Star } from "lucide-react";
-import { useInView } from "react-intersection-observer";
-import { ClinicType } from "@/types/clinic";
-import Autoplay from "embla-carousel-autoplay";
+interface TestimonialsProps {
+  content: LandingPageJson["testimonials"];
+}
 
-type TestimonialsProps = {
-  list: ClinicType["testimonials"];
-};
-
-export default function Testimonials({ list }: TestimonialsProps) {
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-
+export const Testimonials = ({ content }: TestimonialsProps) => {
   return (
-    <section id="testimonios" className="section bg-background">
-      <div ref={ref} className="max-w-4xl mx-4 md:mx-8 lg:mx-auto">
-        <h2 className={`text-center text-3xl font-bold mb-12 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          Lo que dicen nuestros pacientes
-        </h2>
+    <section id="testimonios" className="section-padding bg-muted/30">
+      <div className="container-custom">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+            {content.header.title}
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            {content.header.description}
+          </p>
+        </div>
 
-        <div className={`transition-all duration-700 delay-200 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Carousel
-            opts={{
-              align: "center",
-              loop: true
-            }}
-            plugins={[Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })]}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {list.map((testimonial) => (
-                <CarouselItem key={testimonial.id} className="pl-4 basis-2/3 md:basis-1/2 lg:basis-1/3">
-                  <Card className="h-full">
-                    <div className="p-6">
-                      <div className="flex gap-1 mb-4">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className="w-5 h-5 fill-primary text-primary"
-                          />
-                        ))}
-                      </div>
-                      <blockquote className="mb-4 text-muted-foreground">
-                        &quot;{testimonial.text}&quot;
-                      </blockquote>
-                      <footer className="font-semibold">
-                        {testimonial.name}
-                      </footer>
-                    </div>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
-          </Carousel>
+        {/* Testimonial Cards */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {content.items.map((testimonial, index) => (
+            <TestimonialCard key={index} {...testimonial} delay={index * 150} />
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-10">
+          <Button variant="outline" size="lg">
+            {content.cta.text}
+          </Button>
         </div>
       </div>
     </section>
   );
+};
+
+interface TestimonialCardProps {
+  name: string;
+  location: string;
+  rating: number;
+  quote: string;
+  isVideo: boolean;
+  delay: number;
 }
+
+const TestimonialCard = ({
+  name,
+  location,
+  rating,
+  quote,
+  isVideo,
+  delay,
+}: TestimonialCardProps) => {
+  return (
+    <div
+      className="card-elevated p-6 flex flex-col h-full animate-fade-in-up opacity-0"
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      {/* Quote Icon */}
+      <Quote className="w-8 h-8 text-primary/30 mb-4" />
+
+      {/* Rating */}
+      <div className="flex gap-1 text-accent mb-4">
+        {[...Array(rating)].map((_, i) => (
+          <span key={i}>★</span>
+        ))}
+      </div>
+
+      {/* Quote */}
+      <blockquote className="text-foreground grow mb-6">"{quote}"</blockquote>
+
+      {/* Author */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+            <span className="font-semibold text-secondary-foreground text-sm">
+              {name.split(" ").map(n => n[0]).join("")}
+            </span>
+          </div>
+          <div>
+            <p className="font-medium text-foreground text-sm">{name}</p>
+            <p className="text-xs text-muted-foreground">{location}</p>
+          </div>
+        </div>
+
+        {isVideo && (
+          <button className="w-10 h-10 rounded-full bg-cta flex items-center justify-center shadow-cta hover:scale-110 transition-transform">
+            <Play className="w-4 h-4 text-cta-foreground ml-0.5" />
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};

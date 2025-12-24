@@ -1,64 +1,126 @@
-"use client";
-
+import { Button } from "@/components/ui/button";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { useInView } from "react-intersection-observer";
-import { useRef } from "react";
-import { ClinicType } from "@/types/clinic";
-import ServiceCard from "./serviceCard";
+  Stethoscope,
+  Syringe,
+  Activity,
+  Clock,
+} from "lucide-react";
+import Link from "next/link";
+import { LandingPageJson } from "@/types/pages";
 
-type ServicesProps = {
-  services: ClinicType["services"];
-  clinic: ClinicType;
+interface ServicesProps {
+  content: LandingPageJson["services"];
+}
+
+// Mapeo de iconos
+const iconMap = {
+  Stethoscope,
+  Syringe,
+  Activity,
 };
 
-export default function Services({ services, clinic }: ServicesProps) {
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
-  const autoplay = useRef(Autoplay({ delay: 4000 }));
-
+export const Services = ({ content }: ServicesProps) => {
   return (
-    <section id="servicios" className="section bg-accent/50 py-8 md:py-12">
-      <div ref={ref} className="max-w-6xl mx-auto">
-        <h2
-          className={`text-center text-3xl font-bold mb-4 transition-all duration-700 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          Nuestros Servicios
-        </h2>
+    <section id="servicios" className="section-padding bg-background">
+      <div className="container-custom">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+            {content.header.title}
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {content.header.description}
+          </p>
+        </div>
 
-        <Carousel
-          plugins={[autoplay.current]}
-          opts={{
-            align: "center",
-            loop: true,
-          }}
-          className="w-full relative"
-        >
-          <CarouselContent>
-            {services.map((service, index) => (
-              <CarouselItem
-                key={service.id}
-                className="basis-2/3 lg:basis-1/4 mx-auto my-2"
-              >
-                <ServiceCard service={service} clinic={clinic} index={index} inView={inView} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          {/* Flechas de navegación */}
-          <CarouselPrevious className="left-2 sm:-left-8 bg-white/80 hover:bg-white shadow-md rounded-full" />
-          <CarouselNext className="right-2 sm:-right-8 bg-white/80 hover:bg-white shadow-md rounded-full" />
-        </Carousel>
+        {/* Service Cards */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {content.items.map((service, index) => (
+            <ServiceCard 
+              key={index} 
+              {...service} 
+              cta={content.cta}
+              delay={index * 100} 
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
+};
+
+interface ServiceCardProps {
+  icon: string;
+  title: string;
+  price: string;
+  duration: string;
+  benefit: string;
+  color: string;
+  cta: {
+    text: string;
+    url: string;
+  };
+  delay: number;
 }
+
+const ServiceCard = ({
+  icon,
+  title,
+  price,
+  duration,
+  benefit,
+  color,
+  cta,
+  delay,
+}: ServiceCardProps) => {
+  const Icon = iconMap[icon as keyof typeof iconMap];
+  
+  const colorClasses =
+    {
+      primary: "bg-primary/10 text-primary",
+      cta: "bg-cta/10 text-cta",
+      accent: "bg-accent/10 text-accent",
+      outline: "bg-muted/50 text-foreground",
+    }[color] || "bg-primary/10 text-primary";
+
+  return (
+    <div
+      className="card-elevated p-6 flex flex-col h-full animate-fade-in-up opacity-0"
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      {/* Icon */}
+      <div
+        className={`w-14 h-14 rounded-xl ${colorClasses} flex items-center justify-center mb-5`}
+      >
+        <Icon className="w-7 h-7" />
+      </div>
+
+      {/* Title */}
+      <h3 className="font-heading text-xl font-bold text-foreground mb-2">
+        {title}
+      </h3>
+
+      {/* Price & Duration */}
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-lg font-semibold text-foreground">{price}</span>
+        <span className="flex items-center gap-1 text-sm text-muted-foreground">
+          <Clock className="w-4 h-4" />
+          {duration}
+        </span>
+      </div>
+
+      {/* Benefit */}
+      <p className="text-muted-foreground text-sm grow mb-6">{benefit}</p>
+
+      {/* CTA */}
+      <Button variant="outline" size="sm" asChild>
+        <Link
+          href={cta.url}
+          className="flex items-center gap-2"
+        >
+          <span>{cta.text}</span>
+        </Link>
+      </Button>
+    </div>
+  );
+};

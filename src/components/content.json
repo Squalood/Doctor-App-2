@@ -1,0 +1,186 @@
+{
+  "hero": {
+    "badge": {
+      "text": "✓ Verified by Lymbika"
+    },
+    "doctor": {
+      "name": "Dr. José Orlando Guinto",
+      "specialty": "Neurocirugía",
+      "image": "/dra-iracheta.jpg",
+      "imageAlt": "Dr iracheta - Renal"
+    },
+    "description": {
+      "services": "Valoración • Infiltraciones • Cirugía",
+      "location": "Atención en Star Médica.",
+      "language": "English friendly."
+    },
+    "locations": [
+      {
+        "name": "Ciudad Juárez",
+        "color": "primary"
+      },
+      {
+        "name": "El Paso, TX",
+        "color": "cta"
+      }
+    ],
+    "pricing": {
+      "label": "Valoración desde",
+      "amount": "$1,200",
+      "currency": "MXN",
+      "rating": "4.9"
+    },
+    "modalities": [
+      {
+        "id": "presencial",
+        "label": "Presencial",
+        "icon": "Building",
+        "isDefault": true
+      },
+      {
+        "id": "telemedicina",
+        "label": "Telemedicina",
+        "icon": "Video",
+        "isDefault": false
+      }
+    ],
+    "cta": {
+      "primary": {
+        "text": "Ir a Lymbika",
+        "url": "https://lymbika.com/clinics/clinica-de-neurologia",
+        "icon": "Calendar"
+      },
+      "secondary": {
+        "text": "Ver video",
+        "icon": "Video"
+      }
+    },
+    "microcopy": {
+      "text": "Medical Agent asignado • Slots limitados esta semana"
+    }
+  },
+  "trustStrip": {
+    "stats": [
+      {
+        "icon": "Building",
+        "value": "Star Médica",
+        "label": "Hospital certificado",
+        "isNumber": false
+      },
+      {
+        "icon": "Award",
+        "value": 15,
+        "suffix": "+",
+        "label": "Años de experiencia",
+        "isNumber": true
+      },
+      {
+        "icon": "Shield",
+        "value": 1000,
+        "suffix": "+",
+        "label": "Procedimientos",
+        "isNumber": true
+      },
+      {
+        "icon": "Languages",
+        "value": "ES / EN",
+        "label": "Idiomas",
+        "isNumber": false
+      }
+    ]
+  },
+  "services": {
+    "header": {
+      "title": "Servicios especializados",
+      "description": "Atención integral en neurocirugía con los más altos estándares de calidad"
+    },
+    "items": [
+      {
+        "icon": "Stethoscope",
+        "title": "Consulta de valoración",
+        "price": "Desde $1,200 MXN",
+        "duration": "45-60 min",
+        "benefit": "Diagnóstico preciso con tecnología de imagen avanzada",
+        "color": "primary"
+      },
+      {
+        "icon": "Syringe",
+        "title": "Infiltración columna",
+        "price": "Desde $23,999 MXN",
+        "duration": "~1 hora",
+        "benefit": "Procedimiento ambulatorio, misma día alta médica",
+        "color": "outline"
+      },
+      {
+        "icon": "Activity",
+        "title": "Cirugía neuroquirúrgica",
+        "price": "Cotización personalizada",
+        "duration": "Variable",
+        "benefit": "Quirófanos prioritarios en Star Médica certificados",
+        "color": "accent"
+      }
+    ],
+    "cta": {
+      "text": "Ir a Lymbika",
+      "url": "https://lymbika.com/clinics/clinica-de-neurologia"
+    }
+  },
+  "process": {
+    "header": {
+      "title": "Proceso claro en 3 pasos",
+      "description": "Tu camino hacia una vida sin dolor"
+    },
+    "steps": [
+      {
+        "icon": "Calendar",
+        "number": "01",
+        "title": "Reserva tu cita",
+        "description": "Agenda online en minutos. Elige modalidad presencial o telemedicina."
+      },
+      {
+        "icon": "ClipboardCheck",
+        "number": "02",
+        "title": "Valoración & estudios",
+        "description": "Diagnóstico completo con revisión de imagen y plan de tratamiento."
+      },
+      {
+        "icon": "HeartPulse",
+        "number": "03",
+        "title": "Tratamiento & seguimiento",
+        "description": "Procedimiento en Star Médica con acompañamiento de Medical Agent."
+      }
+    ]
+  },
+  "testimonials": {
+    "header": {
+      "title": "Lo que dicen nuestros pacientes",
+      "description": "Historias reales de transformación"
+    },
+    "items": [
+      {
+        "name": "Carlos M.",
+        "location": "Ciudad Juárez",
+        "rating": 5,
+        "quote": "Después de años con dolor de espalda, el Dr. Guinto me devolvió mi calidad de vida. Profesional y humano.",
+        "isVideo": false
+      },
+      {
+        "name": "Jennifer L.",
+        "location": "El Paso, TX",
+        "rating": 5,
+        "quote": "The whole process was seamless. Dr. Guinto speaks excellent English and his Medical Agent helped with everything.",
+        "isVideo": true
+      },
+      {
+        "name": "Roberto S.",
+        "location": "Las Cruces, NM",
+        "rating": 5,
+        "quote": "La cirugía fue un éxito total. El equipo de Star Médica es de primer nivel y los costos son muy accesibles.",
+        "isVideo": false
+      }
+    ],
+    "cta": {
+      "text": "Ver más testimonios"
+    }
+  }
+}
