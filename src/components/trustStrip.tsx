@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Shield, Award, Languages, Building } from "lucide-react";
-import { PageType } from "@/types/pages";
+import { LandingPageJson } from "@/types/LandingPageJson";
 
 interface TrustStripProps {
-  content: PageType["landingPageJson"]["trustStrip"];
+  content: LandingPageJson["trustStrip"];
 }
 
 // Mapeo de iconos

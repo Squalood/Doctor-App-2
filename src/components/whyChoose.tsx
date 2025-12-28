@@ -1,8 +1,8 @@
 import { Building, Award, Users, MessageCircle, Play } from "lucide-react";
-import { PageType } from "@/types/pages";
+import { LandingPageJson } from "@/types/LandingPageJson";
 
 interface WhyChooseProps {
-  content: PageType["landingPageJson"]["whyChoose"];
+  content: LandingPageJson["whyChoose"];
 }
 
 // Mapeo de iconos

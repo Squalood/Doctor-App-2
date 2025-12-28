@@ -82,8 +82,8 @@
   --muted-foreground: oklch(0.55 0.02 260);
 
   /* Accent - Stripe Purple #635BFF */
-  --accent: oklch(0.623 0.214 259.815);
-  --accent-foreground: oklch(0.99 0 0);
+ --accent: oklch(0.961 0.008 240);
+--accent-foreground: oklch(0.195 0.045 255);
 
   /* Destructive - Red */
   --destructive: oklch(0.577 0.245 27.325);

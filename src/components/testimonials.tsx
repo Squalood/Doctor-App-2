@@ -1,9 +1,9 @@
 import { Play, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PageType } from "@/types/pages";
+import { LandingPageJson } from "@/types/LandingPageJson";
 
 interface TestimonialsProps {
-  content: PageType["landingPageJson"]["testimonials"];
+  content: LandingPageJson["testimonials"];
 }
 
 export const Testimonials = ({ content }: TestimonialsProps) => {
