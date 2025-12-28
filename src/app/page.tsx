@@ -45,7 +45,7 @@ export default function Home() {
         <Hero content={page.landingPageJson.hero}/>
         <TrustStrip content={page.landingPageJson.trustStrip}/>
         <Services content={page.landingPageJson.services}/>
-        <WhyChoose />
+        <WhyChoose content={page.landingPageJson.whyChoose} />
         <Process content={page.landingPageJson.process}/>
         <Testimonials content={page.landingPageJson.testimonials}/>
         <FAQ />

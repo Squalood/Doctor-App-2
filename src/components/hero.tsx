@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Video, Building } from "lucide-react";
 import Link from "next/link";
-import { LandingPageJson } from "@/types/pages";
+import { PageType } from "@/types/pages";
 
 interface HeroProps {
-  content: LandingPageJson["hero"];
+  content: PageType["landingPageJson"]["hero"];
 }
 
 export const Hero = ({ content }: HeroProps) => {

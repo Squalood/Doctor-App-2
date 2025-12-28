@@ -6,10 +6,10 @@ import {
   Clock,
 } from "lucide-react";
 import Link from "next/link";
-import { LandingPageJson } from "@/types/pages";
+import { PageType } from "@/types/pages";
 
 interface ServicesProps {
-  content: LandingPageJson["services"];
+  content: PageType["landingPageJson"]["services"];
 }
 
 // Mapeo de iconos

@@ -1,8 +1,8 @@
 import { Calendar, ClipboardCheck, HeartPulse } from "lucide-react";
-import { LandingPageJson } from "@/types/pages";
+import { PageType } from "@/types/pages";
 
 interface ProcessProps {
-  content: LandingPageJson["process"];
+  content: PageType["landingPageJson"]["process"];
 }
 
 // Mapeo de iconos

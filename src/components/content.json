@@ -182,5 +182,47 @@
     "cta": {
       "text": "Ver más testimonios"
     }
+  },
+  "whyChoose": {
+    "header": {
+      "title": "¿Por qué elegir al",
+      "titleHighlight": "Dr. Guinto?",
+      "highlightColor": "primary"
+    },
+    "features": [
+      {
+        "icon": "Building",
+        "title": "Star Médica — Quirófanos prioritarios",
+        "description": "Acceso a instalaciones de primer nivel con tecnología de punta"
+      },
+      {
+        "icon": "Award",
+        "title": "+15 años de experiencia",
+        "description": "Formación en instituciones líderes a nivel nacional e internacional"
+      },
+      {
+        "icon": "Users",
+        "title": "+2,500 procedimientos exitosos",
+        "description": "Track record comprobado con altos índices de satisfacción"
+      },
+      {
+        "icon": "MessageCircle",
+        "title": "English friendly",
+        "description": "Atención bilingüe para pacientes de El Paso y New Mexico"
+      }
+    ],
+    "testimonialCard": {
+      "rating": 5,
+      "quote": "El Dr. Guinto me explicó todo el proceso con mucha claridad. La infiltración fue rápida y profesional. A las 3 semanas ya estaba sin dolor.",
+      "author": {
+        "name": "María R.",
+        "location": "Paciente de El Paso, TX",
+        "initials": "MR"
+      }
+    },
+    "videoCta": {
+      "title": "Ver procedimiento",
+      "subtitle": "Infiltración de columna"
+    }
   }
 }
