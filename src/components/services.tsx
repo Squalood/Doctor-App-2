@@ -115,7 +115,7 @@ const ServiceCard = ({
       {/* CTA */}
       <Button variant="outline" size="sm" asChild>
         <Link
-          href={cta.url}
+          href={`https://lymbika.com/clinics/${process.env.NEXT_PUBLIC_CLINIC_SLUG || 'clinica-de-neurologia'}`}
           className="flex items-center gap-2"
         >
           <span>{cta.text}</span>

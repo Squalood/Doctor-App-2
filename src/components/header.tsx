@@ -87,7 +87,7 @@ export const Header = ({ content }: HeaderProps) => {
               asChild
             >
               <Link
-                  href="https://lymbika.com/clinics/clinica-renal"
+                  href={`https://lymbika.com/clinics/${process.env.NEXT_PUBLIC_CLINIC_SLUG || 'clinica-de-neurologia'}`}
                   className="flex items-center gap-2"
                 >
                   <Calendar className="h-5 w-5" />
@@ -123,7 +123,7 @@ export const Header = ({ content }: HeaderProps) => {
               <div className="pt-4 border-t border-border mt-2">
                 <Button variant="outline" size="lg" asChild>
                   <Link
-                    href="https://lymbika.com/clinics/clinica-renal"
+                    href={`https://lymbika.com/clinics/${process.env.NEXT_PUBLIC_CLINIC_SLUG || 'clinica-de-neurologia'}`}
                     className="flex items-center gap-2"
                   >
                     <Calendar className="h-5 w-5" />

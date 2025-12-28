@@ -101,7 +101,7 @@ export const Hero = ({ content, hero }: HeroProps) => {
             >
               <Button variant="outline" size="lg" asChild>
                 <Link
-                  href={content.cta.primary.url}
+                  href={`https://lymbika.com/clinics/${process.env.NEXT_PUBLIC_CLINIC_SLUG || 'clinica-de-neurologia'}`}
                   className="flex items-center gap-2"
                 >
                   <Calendar className="h-5 w-5" />
@@ -180,7 +180,7 @@ export const Hero = ({ content, hero }: HeroProps) => {
               {/* Main CTA */}
               <Button variant="outline" size="lg" asChild>
                 <Link
-                  href={content.cta.primary.url}
+                  href={`https://lymbika.com/clinics/${process.env.NEXT_PUBLIC_CLINIC_SLUG || 'clinica-de-neurologia'}`}
                   className="flex items-center gap-2 w-full my-4"
                 >
                   <Calendar className="h-5 w-5" />
@@ -204,7 +204,7 @@ export const Hero = ({ content, hero }: HeroProps) => {
       <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-card/95 backdrop-blur-md border-t border-border z-40">
         <Button variant="outline" size="lg" asChild>
           <Link
-            href={content.cta.primary.url}
+            href={`https://lymbika.com/clinics/${process.env.NEXT_PUBLIC_CLINIC_SLUG || 'clinica-de-neurologia'}`}
             className="flex items-center gap-2"
           >
             <Calendar className="h-5 w-5" />
