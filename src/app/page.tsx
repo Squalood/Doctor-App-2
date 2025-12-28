@@ -1,5 +1,6 @@
 "use client";
 
+import { useGetPageHero } from "@/api/getPageHeroBySlug";
 import { useGetPage } from "@/api/usePageBySlug";
 import { BookingModal } from "@/components/bookingModal";
 import { FAQ } from "@/components/fAQ";
@@ -20,7 +21,8 @@ export default function Home() {
 
   const closeBooking = () => setIsBookingOpen(false);
 
-  const { page, loading, error } = useGetPage("dra-iracheta");
+  const { page, loading, error } = useGetPage(process.env.NEXT_PUBLIC_PAGE_SLUG || "dr-guinto");
+  const { hero } = useGetPageHero(process.env.NEXT_PUBLIC_PAGE_SLUG || "dr-guinto");
 
   if (loading) {
     return <LandingSkeleton />;
@@ -34,12 +36,14 @@ export default function Home() {
     );
   }
 
+  const heroData = hero[0]?.hero;
+
   return (
     <div className="min-h-screen bg-background">
       <Header content={page.landingPageJson.telephone}/>
       
       <main>
-        <Hero content={page.landingPageJson.hero}/>
+        <Hero content={page.landingPageJson.hero} hero={heroData}/>
         <TrustStrip content={page.landingPageJson.trustStrip}/>
         <Services content={page.landingPageJson.services}/>
         <WhyChoose content={page.landingPageJson.whyChoose} />

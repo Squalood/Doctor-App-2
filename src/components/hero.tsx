@@ -3,12 +3,15 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Video, Building } from "lucide-react";
 import Link from "next/link";
 import { LandingPageJson } from "@/types/landingPageJson";
+import { PageType } from "@/types/pages";
 
 interface HeroProps {
   content: LandingPageJson["hero"];
+  hero: PageType["hero"];
 }
 
-export const Hero = ({ content }: HeroProps) => {
+export const Hero = ({ content, hero }: HeroProps) => {
+  if (!hero) return null;
   return (
     <section
       className="relative h-full pt-20 pb-16 overflow-hidden"
@@ -84,7 +87,7 @@ export const Hero = ({ content }: HeroProps) => {
               <div className="relative w-64 h-64 mx-auto">
                 <div className="absolute inset-0 rounded-2xl bg-primary/10" />
                 <img
-                  src={content.doctor.image}
+                  src={hero?.image.url}
                   alt={content.doctor.imageAlt}
                   className="relative w-full h-full object-cover object-top rounded-2xl shadow-xl"
                 />
@@ -123,7 +126,7 @@ export const Hero = ({ content }: HeroProps) => {
               <div className="relative w-80 h-80 mx-auto">
                 <div className="absolute -inset-4 rounded-3xl bg-linear-to-br from-primary/20 to-cta/20 blur-2xl" />
                 <img
-                  src={content.doctor.image}
+                  src={hero?.image.url}
                   alt={content.doctor.imageAlt}
                   className="relative w-full h-full object-cover object-top rounded-2xl shadow-xl"
                 />
