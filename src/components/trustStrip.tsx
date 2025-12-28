@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Shield, Award, Languages, Building } from "lucide-react";
-import { LandingPageJson } from "@/types/LandingPageJson";
+import { LandingPageJson } from "@/types/landingPageJson";
 
 interface TrustStripProps {
   content: LandingPageJson["trustStrip"];

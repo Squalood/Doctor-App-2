@@ -1,4 +1,4 @@
-import { LandingPageJson } from "./LandingPageJson";
+import { LandingPageJson } from "./landingPageJson";
 
 // Tipo para la respuesta de Strapi v5 (sin attributes anidado)
 export type StrapiPageResponse = {

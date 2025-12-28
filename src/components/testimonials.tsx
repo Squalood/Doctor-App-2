@@ -1,6 +1,6 @@
 import { Play, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LandingPageJson } from "@/types/LandingPageJson";
+import { LandingPageJson } from "@/types/landingPageJson";
 
 interface TestimonialsProps {
   content: LandingPageJson["testimonials"];

@@ -1,5 +1,5 @@
 import { Building, Award, Users, MessageCircle, Play } from "lucide-react";
-import { LandingPageJson } from "@/types/LandingPageJson";
+import { LandingPageJson } from "@/types/landingPageJson";
 
 interface WhyChooseProps {
   content: LandingPageJson["whyChoose"];

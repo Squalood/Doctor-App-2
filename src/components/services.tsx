@@ -6,7 +6,7 @@ import {
   Clock,
 } from "lucide-react";
 import Link from "next/link";
-import { LandingPageJson } from "@/types/LandingPageJson";
+import { LandingPageJson } from "@/types/landingPageJson";
 
 interface ServicesProps {
   content: LandingPageJson["services"];

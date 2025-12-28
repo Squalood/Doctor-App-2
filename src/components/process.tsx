@@ -1,5 +1,5 @@
 import { Calendar, ClipboardCheck, HeartPulse } from "lucide-react";
-import { LandingPageJson } from "@/types/LandingPageJson";
+import { LandingPageJson } from "@/types/landingPageJson";
 
 interface ProcessProps {
   content: LandingPageJson["process"];

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Menu, X, Globe, Calendar } from "lucide-react";
 import Link from "next/link";
-import { LandingPageJson } from "@/types/LandingPageJson";
+import { LandingPageJson } from "@/types/landingPageJson";
 
 interface HeaderProps {
   content: LandingPageJson["telephone"];
