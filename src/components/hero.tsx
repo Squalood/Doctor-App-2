@@ -65,7 +65,7 @@ export const Hero = ({ content }: HeroProps) => {
               className="flex flex-wrap gap-3 mb-8 animate-fade-in-up opacity-0"
               style={{ animationDelay: "400ms" }}
             >
-              {content.locations.map((location, index) => (
+              {content.locations.map((location: { name: string; color: string }, index: number) => (
                 <span
                   key={index}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-card rounded-full text-sm font-medium text-foreground shadow-sm border border-border/50"
@@ -156,7 +156,7 @@ export const Hero = ({ content }: HeroProps) => {
 
               {/* Modality Selector */}
               <div className="grid grid-cols-2 gap-2 mb-4">
-                {content.modalities.map((modality) => {
+                {content.modalities.map((modality: { id: string; icon: string; label: string; isDefault: boolean }) => {
                   const Icon = modality.icon === "Building" ? Building : Video;
                   return (
                     <button

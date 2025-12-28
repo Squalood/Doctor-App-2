@@ -6,6 +6,7 @@ import { FAQ } from "@/components/fAQ";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
+import LandingSkeleton from "@/components/landingSkeleton";
 import { Process } from "@/components/process";
 import { Services } from "@/components/services";
 import { Testimonials } from "@/components/testimonials";
@@ -22,11 +23,7 @@ export default function Home() {
   const { page, loading, error } = useGetPage("dra-iracheta");
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p>Cargando...</p>
-      </div>
-    );
+    return <LandingSkeleton />;
   }
 
   if (error || !page) {
