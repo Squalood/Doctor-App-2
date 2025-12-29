@@ -1,10 +1,10 @@
 export type LandingPageJson = {
   metadata?: {
-  title?: string;
-  description?: string;
-  keywords?: string;
-  ogImage?: string;
-  },
+    title?: string;
+    description?: string;
+    keywords?: string;
+    ogImage?: string;
+  };
   telephone: {
     text: string;
   };
@@ -132,6 +132,52 @@ export type LandingPageJson = {
     videoCta: {
       title: string;
       subtitle: string;
+    };
+  };
+  footer: {
+    brand: {
+      name: string;
+      logo: string; 
+      description: string; 
+    };
+    social: Array<{
+      name: string; 
+      icon: string; 
+      url: string;
+    }>;
+    contact: {
+      title: string;
+      phone: {
+        label: string; 
+        url: string; 
+      };
+      email: {
+        label: string; 
+        url: string;
+      };
+      address: {
+        name: string; // "Star Médica Ciudad Juárez"
+        street: string; // "Paseo de la Victoria 631, Partido Iglesias"
+      };
+    };
+    hours: {
+      title: string; // "Horarios"
+      schedule: Array<{
+        days: string; // "Lun - Vie", "Sáb"
+        hours: string; // "9:00 - 19:00", "9:00 - 14:00"
+      }>;
+      emergency: string; // "*Urgencias: Disponibilidad 24/7..."
+    };
+    legal: {
+      title: string; // "Legal"
+      links: Array<{
+        text: string; // "Términos y Condiciones"
+        url: string; // "#" o URL real
+      }>;
+    };
+    copyright: {
+      text: string; // "© 2024 Lymbika..."
+      powered: string; // "Powered by Lymbika Health Network"
     };
   };
 };

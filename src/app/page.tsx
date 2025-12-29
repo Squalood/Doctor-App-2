@@ -53,7 +53,7 @@ export default function Home() {
         <TravelSupport />
       </main>
 
-      <Footer />
+      <Footer content={page.landingPageJson.footer}/>
 
       <BookingModal isOpen={isBookingOpen} onClose={closeBooking} />
     </div>

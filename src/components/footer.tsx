@@ -1,6 +1,18 @@
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin } from "lucide-react";
+import { LandingPageJson } from "@/types/landingPageJson";
 
-export const Footer = () => {
+interface FooterProps {
+  content: LandingPageJson["footer"];
+}
+
+// Mapeo de iconos
+const iconMap = {
+  Facebook,
+  Instagram,
+  Linkedin,
+};
+
+export const Footer = ({ content }: FooterProps) => {
   return (
     <footer id="contacto" className="bg-foreground text-background">
       <div className="container-custom py-16">
@@ -9,47 +21,64 @@ export const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-heading font-bold text-lg">L</span>
+                <span className="text-primary-foreground font-heading font-bold text-lg">
+                  {content.brand.logo}
+                </span>
               </div>
-              <span className="font-heading font-bold text-xl">Lymbika</span>
+              <span className="font-heading font-bold text-xl">
+                {content.brand.name}
+              </span>
             </div>
             <p className="text-background/70 text-sm mb-6">
-              Conectando pacientes con especialistas de confianza. Atención médica premium en la frontera.
+              {content.brand.description}
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
+              {content.social.map((social, index) => {
+                const Icon = iconMap[social.icon as keyof typeof iconMap];
+                return (
+                  <a
+                    key={index}
+                    href={social.url}
+                    aria-label={social.name}
+                    className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-4">Contacto</h3>
+            <h3 className="font-heading font-bold text-lg mb-4">
+              {content.contact.title}
+            </h3>
             <ul className="space-y-3">
               <li>
-                <a href="tel:+526561234567" className="flex items-center gap-3 text-background/70 hover:text-background transition-colors">
+                <a
+                  href={content.contact.phone.url}
+                  className="flex items-center gap-3 text-background/70 hover:text-background transition-colors"
+                >
                   <Phone className="w-4 h-4" />
-                  +52 656 123 4567
+                  {content.contact.phone.label}
                 </a>
               </li>
               <li>
-                <a href="mailto:citas@lymbika.com" className="flex items-center gap-3 text-background/70 hover:text-background transition-colors">
+                <a
+                  href={content.contact.email.url}
+                  className="flex items-center gap-3 text-background/70 hover:text-background transition-colors"
+                >
                   <Mail className="w-4 h-4" />
-                  citas@lymbika.com
+                  {content.contact.email.label}
                 </a>
               </li>
               <li className="flex items-start gap-3 text-background/70">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
                 <span>
-                  Star Médica Ciudad Juárez<br />
-                  Paseo de la Victoria 631, Partido Iglesias
+                  {content.contact.address.name}
+                  <br />
+                  {content.contact.address.street}
                 </span>
               </li>
             </ul>
@@ -57,46 +86,38 @@ export const Footer = () => {
 
           {/* Hours */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-4">Horarios</h3>
+            <h3 className="font-heading font-bold text-lg mb-4">
+              {content.hours.title}
+            </h3>
             <ul className="space-y-3 text-background/70">
-              <li className="flex items-center gap-3">
-                <Clock className="w-4 h-4" />
-                <span>Lun - Vie: 9:00 - 19:00</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Clock className="w-4 h-4" />
-                <span>Sáb: 9:00 - 14:00</span>
-              </li>
-              <li className="text-sm">
-                *Urgencias: Disponibilidad 24/7 en Star Médica
-              </li>
+              {content.hours.schedule.map((item, index) => (
+                <li key={index} className="flex items-center gap-3">
+                  <Clock className="w-4 h-4" />
+                  <span>
+                    {item.days}: {item.hours}
+                  </span>
+                </li>
+              ))}
+              <li className="text-sm">{content.hours.emergency}</li>
             </ul>
           </div>
 
           {/* Legal */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-4">Legal</h3>
+            <h3 className="font-heading font-bold text-lg mb-4">
+              {content.legal.title}
+            </h3>
             <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-background/70 hover:text-background transition-colors">
-                  Términos y Condiciones
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-background/70 hover:text-background transition-colors">
-                  Política de Privacidad
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-background/70 hover:text-background transition-colors">
-                  Aviso de Privacidad
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-background/70 hover:text-background transition-colors">
-                  Política de Reembolso
-                </a>
-              </li>
+              {content.legal.links.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.url}
+                    className="text-background/70 hover:text-background transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -104,68 +125,13 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-background/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-background/50 text-sm">
-            © 2024 Lymbika. Todos los derechos reservados.
+            {content.copyright.text}
           </p>
           <p className="text-background/50 text-sm">
-            Powered by Lymbika Health Network
+            {content.copyright.powered}
           </p>
         </div>
       </div>
-
-      {/* Schema.org LocalBusiness */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "MedicalBusiness",
-          "name": "Dr. José Orlando Guinto - Neurocirugía",
-          "image": "",
-          "url": "https://drjoseorlandoguinto.com",
-          "telephone": "+526561234567",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Paseo de la Victoria 631",
-            "addressLocality": "Ciudad Juárez",
-            "addressRegion": "Chihuahua",
-            "postalCode": "32618",
-            "addressCountry": "MX"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 31.7325,
-            "longitude": -106.4847
-          },
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              "opens": "09:00",
-              "closes": "19:00"
-            },
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": "Saturday",
-              "opens": "09:00",
-              "closes": "14:00"
-            }
-          ],
-          "priceRange": "$$"
-        })
-      }} />
-
-      {/* Schema.org Physician */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Physician",
-          "name": "Dr. José Orlando Guinto Nava",
-          "medicalSpecialty": "Neurosurgery",
-          "hospitalAffiliation": {
-            "@type": "Hospital",
-            "name": "Star Médica Ciudad Juárez"
-          },
-          "availableLanguage": ["Spanish", "English"]
-        })
-      }} />
     </footer>
   );
 };
