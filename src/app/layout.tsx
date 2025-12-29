@@ -3,6 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { generatePageMetadata } from "@/lib/metadata";
 
 // Inter para el body
 const inter = Inter({ 
@@ -19,15 +20,10 @@ const montserrat = Montserrat({
   weight: ["600", "700", "800"]
 });
 
-export const metadata: Metadata = {
-  title: "Clínica de Neurología",
-  description: "Clínica de Neurología de Dr. José Orlando Guinto Nava",
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-};
+// Generar metadata dinámicamente desde Strapi
+export async function generateMetadata(): Promise<Metadata> {
+  return await generatePageMetadata();
+}
 
 export default function RootLayout({
   children,

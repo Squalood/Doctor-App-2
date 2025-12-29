@@ -1,4 +1,10 @@
 export type LandingPageJson = {
+  metadata?: {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+  },
   telephone: {
     text: string;
   };
