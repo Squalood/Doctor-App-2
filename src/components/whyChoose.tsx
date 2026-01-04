@@ -87,24 +87,7 @@ export const WhyChoose = ({ content }: WhyChooseProps) => {
             </div>
 
             {/* Video CTA */}
-            <div
-              className="relative overflow-hidden rounded-xl bg-linear-to-br from-primary/10 to-cta/10 p-8 animate-slide-up opacity-0 group cursor-pointer"
-              style={{ animationDelay: '400ms' }}
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-cta flex items-center justify-center shadow-cta group-hover:scale-110 transition-transform">
-                  <Play className="w-7 h-7 text-cta-foreground ml-1" />
-                </div>
-                <div>
-                  <p className="font-semibold text-foreground">
-                    {content.videoCta.title}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {content.videoCta.subtitle}
-                  </p>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

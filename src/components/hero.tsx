@@ -109,10 +109,6 @@ export const Hero = ({ content, hero }: HeroProps) => {
                 </Link>
               </Button>
 
-              <Button variant="secondary" size="lg">
-                <Video className="w-5 h-5" />
-                {content.cta.secondary.text}
-              </Button>
             </div>
           </div>
 
